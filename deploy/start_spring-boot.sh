@@ -3,7 +3,7 @@
 ## 检查系统类型
 export os_type=`uname`
 
-## 停止spring-boot函数
+## 停止spring-boot函数 ,杀进程函数
 killSpringBoot()
 {
     pid=`ps -ef|grep spring-boot|grep java|awk '{print $2}'`

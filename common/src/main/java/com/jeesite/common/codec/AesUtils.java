@@ -34,7 +34,8 @@ public class AesUtils {
 	 * 生成AES密钥,返回字节数组, 默认长度为128位(16字节).
 	 */
 	public static String genKeyString() {
-		return EncodeUtils.encodeHex(genKey(DEFAULT_AES_KEYSIZE));
+		return com.jeesite.common.codec.EncodeUtils.encodeHex(genKey(DEFAULT_AES_KEYSIZE));
+
 	}
 	
 	/**
@@ -44,7 +45,7 @@ public class AesUtils {
 	 */
 	public static String encode(String input) {
 		try {
-			return EncodeUtils.encodeHex(encode(input.getBytes(DEFAULT_URL_ENCODING), DEFAULT_KEY));
+			return com.jeesite.common.codec.EncodeUtils.encodeHex(encode(input.getBytes(DEFAULT_URL_ENCODING), DEFAULT_KEY));
 		} catch (UnsupportedEncodingException e) {
 			return "";
 		}
@@ -58,7 +59,7 @@ public class AesUtils {
 	 */
 	public static String encode(String input, String key) {
 		try {
-			return EncodeUtils.encodeHex(encode(input.getBytes(DEFAULT_URL_ENCODING), EncodeUtils.decodeHex(key)));
+			return com.jeesite.common.codec.EncodeUtils.encodeHex(encode(input.getBytes(DEFAULT_URL_ENCODING), com.jeesite.common.codec.EncodeUtils.decodeHex(key)));
 		} catch (UnsupportedEncodingException e) {
 			return "";
 		}
@@ -71,7 +72,7 @@ public class AesUtils {
 	 */
 	public static String decode(String input) {
 		try {
-			return new String(decode(EncodeUtils.decodeHex(input), DEFAULT_KEY), DEFAULT_URL_ENCODING);
+			return new String(decode(com.jeesite.common.codec.EncodeUtils.decodeHex(input), DEFAULT_KEY), DEFAULT_URL_ENCODING);
 		} catch (UnsupportedEncodingException e) {
 			return "";
 		}
@@ -85,7 +86,7 @@ public class AesUtils {
 	 */
 	public static String decode(String input, String key) {
 		try {
-			return new String(decode(EncodeUtils.decodeHex(input), EncodeUtils.decodeHex(key)), DEFAULT_URL_ENCODING);
+			return new String(decode(com.jeesite.common.codec.EncodeUtils.decodeHex(input), com.jeesite.common.codec.EncodeUtils.decodeHex(key)), DEFAULT_URL_ENCODING);
 		} catch (UnsupportedEncodingException e) {
 			return "";
 		}
